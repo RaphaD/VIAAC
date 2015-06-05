@@ -29,13 +29,17 @@ class VIAACClient(Thread):
         self._db = DBCommunication()
 
         while self._listenToClient:
+
             try:
+
                 data = self._socket.recv(self._BUFFER_SIZE)
+
                 if data:
                     print "Message from : ", self._clientInfo
                     print data
                     toSend = self._db.getOrderToSend(data)
                     print "Fetched from db : ", toSend
+
                     if toSend:
                         self._timer = time.time()
                         with lock:
@@ -43,6 +47,7 @@ class VIAACClient(Thread):
                             print "sent to arduino : ", str(toSend) + ";"
                 else:
                     self._socket.send("KEEP_ALIVE")
+
             except socket.timeout:
                 self._listenToClient = not (time.time() - self._timer > self._MAX_CONNECTION_TIME)
             except socket.error:
@@ -50,7 +55,12 @@ class VIAACClient(Thread):
                 self._listenToClient = False
             else:
                 self._listenToClient = not (time.time() - self._timer > self._MAX_CONNECTION_TIME)
+
         print "End of listening loop"
+        try:
+            self._socket.close()
+        except:
+            pass
 
     def setMustRun(self, mustRun):
         self._mustRun = mustRun

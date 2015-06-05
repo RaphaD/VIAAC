@@ -35,11 +35,3 @@ class VIAACServer(object):
 
         for client in clients:
             client.join()
-
-
-if __name__ == '__main__':
-    arduino = None
-    port = 9002
-    clientTreshold = 5
-    VS = VIAACServer(arduino=arduino, portServer=port, clientTreshold=clientTreshold)
-    VS.mainLoop()
