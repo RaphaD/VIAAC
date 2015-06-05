@@ -14,8 +14,8 @@ class DBCommunication(object):
             FROM Commands
             WHERE Command = ?"""
         curs.execute(sqlRequest, (order, ))
-        curs.close()
         sqlResult = curs.fetchone()
+        curs.close()
         if sqlResult:
             return int(sqlResult[0])
         else:
