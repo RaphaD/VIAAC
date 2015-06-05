@@ -1,15 +1,8 @@
 from server.VIAACServer import VIAACServer
-from local.VIAACVoice import VIAACVoice
+from utils.VIAACVoice import VIAACVoice
+from utils.params import PORT_SERVER, CLIENT_TRESHOLD
 
 __author__ = 'fums'
-
-# Some variables needed for the server initialisation
-PORT_SERVER = 9004  # Opened port
-CLIENT_TRESHOLD = 5  # Same-time connections
-
-# Some variables needed for the arduino communication initialisation
-USB_PORT = "/dev/ttyACM0"
-BAUDRATE = 9600
 
 
 class VIAAC(object):

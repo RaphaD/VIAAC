@@ -32,5 +32,5 @@ class DBCommunication(object):
             ORDERED BY SentenceId, SentenceOrder;
             """
         curs.execute(sqlRequest, (question, ))
-        curs.close()
         print curs.fetchall()
+        curs.close()

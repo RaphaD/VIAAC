@@ -3,6 +3,7 @@ import socket
 from threading import Thread, RLock
 
 from utils.DBCommunication import DBCommunication
+from utils.params import MAX_CONNECTION_TIME, BUFFER_SIZE, SOCKET_TIMEOUT
 
 
 __author__ = 'fums'
@@ -14,12 +15,8 @@ class VIAACClient(Thread):
     def __init__(self, socket, clientInfo, arduino):
         Thread.__init__(self)
 
-        self._MAX_CONNECTION_TIME = 10
-        self._BUFFER_SIZE = 1024
-        self._SOCKET_TIMEOUT = 2.0
-
         self._socket = socket
-        self._socket.settimeout(self._SOCKET_TIMEOUT)
+        self._socket.settimeout(SOCKET_TIMEOUT)
         self._clientInfo = clientInfo
         self._arduino = arduino
         self._timer = time.time()
@@ -32,7 +29,7 @@ class VIAACClient(Thread):
 
             try:
 
-                data = self._socket.recv(self._BUFFER_SIZE)
+                data = self._socket.recv(BUFFER_SIZE)
 
                 if data:
                     print "Message from : ", self._clientInfo
@@ -49,12 +46,12 @@ class VIAACClient(Thread):
                     self._socket.send("KEEP_ALIVE")
 
             except socket.timeout:
-                self._listenToClient = not (time.time() - self._timer > self._MAX_CONNECTION_TIME)
+                self._listenToClient = not (time.time() - self._timer > MAX_CONNECTION_TIME)
             except socket.error:
                 print "Client logged out"
                 self._listenToClient = False
             else:
-                self._listenToClient = not (time.time() - self._timer > self._MAX_CONNECTION_TIME)
+                self._listenToClient = not (time.time() - self._timer > MAX_CONNECTION_TIME)
 
         print "End of listening loop"
         try:
