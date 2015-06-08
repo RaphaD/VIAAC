@@ -7,9 +7,10 @@ __author__ = 'fums'
 
 
 class VIAACServer(object):
-    def __init__(self, arduino, portServer, clientTreshold):
+    def __init__(self, arduino, voicer, portServer, clientTreshold):
         self._port = portServer
         self._arduino = arduino
+        self._voicer = voicer
         self._isServerRunning = True
 
         self._sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -28,7 +29,8 @@ class VIAACServer(object):
             print "New client", connectionInfo
 
             # Start client thread
-            Client = VIAACClient(socket=clientConnection, clientInfo=connectionInfo, arduino=self._arduino)
+            Client = VIAACClient(voicer=self._voicer, socket=clientConnection, clientInfo=connectionInfo,
+                                 arduino=self._arduino)
             Client.start()
 
             clients.append(Client)

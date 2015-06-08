@@ -13,7 +13,8 @@ class VIAAC(object):
     def initProcesses(self):
         print "Initialisation of the different services"
         self._voicer = VIAACVoice()
-        self._server = VIAACServer(self._arduino, PORT_SERVER, CLIENT_TRESHOLD)
+        self._server = VIAACServer(arduino=self._arduino, voicer=self._voicer,
+                                   portServer=PORT_SERVER, clientTreshold=CLIENT_TRESHOLD)
 
     def startProcesses(self):
         self._server.mainLoop()
@@ -27,4 +28,5 @@ class VIAAC(object):
 if __name__ == "__main__":
     V = VIAAC()
     V.initProcesses()
+    V.startProcesses()
     V.startProcesses()

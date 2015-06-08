@@ -34,3 +34,6 @@ class DBCommunication(object):
         curs.execute(sqlRequest, (question, ))
         print curs.fetchall()
         curs.close()
+
+    def getOpenedDatabase(self):
+        return self._db

@@ -2,7 +2,7 @@ import time
 import socket
 from threading import Thread, RLock
 
-from utils.DBCommunication import DBCommunication
+from database import DBCommunication
 from utils.params import MAX_CONNECTION_TIME, BUFFER_SIZE, SOCKET_TIMEOUT
 
 
@@ -12,13 +12,14 @@ lock = RLock()
 
 
 class VIAACClient(Thread):
-    def __init__(self, socket, clientInfo, arduino):
+    def __init__(self, socket, clientInfo, arduino, voicer):
         Thread.__init__(self)
 
         self._socket = socket
         self._socket.settimeout(SOCKET_TIMEOUT)
         self._clientInfo = clientInfo
         self._arduino = arduino
+        self._voicer = voicer
         self._timer = time.time()
         self._listenToClient = True
 
