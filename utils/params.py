@@ -14,4 +14,7 @@ SOCKET_TIMEOUT = 2.0
 # Size of the buffer used to receive messages from clients
 BUFFER_SIZE = 1024
 # Unactivity time before closing connection with
-MAX_CONNECTION_TIME = 10
+MAX_CONNECTION_TIME = 60 * 60
+
+# Flag sent to tell if the program has to run the algo to identify the message
+FLAG_RAW_COMMAND = "[raw_command]"

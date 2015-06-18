@@ -4,8 +4,6 @@ import time
 from pydub import AudioSegment
 from pydub.playback import play
 
-from database import DBCommunication
-
 
 __author__ = 'fums'
 
@@ -14,7 +12,6 @@ class VIAACVoice(threading.Thread):
     def __init__(self):
         super(VIAACVoice, self).__init__()
         self._WAIT_TIME = 2
-        self._db = DBCommunication()
         self._toSay = []
         self._waitForSay = True
 
@@ -26,7 +23,7 @@ class VIAACVoice(threading.Thread):
             else:
                 time.sleep(self._WAIT_TIME)
 
-    def addToToSay(self, element):
+    def addToSay(self, element):
         self._toSay.append(element)
 
     def say(self, sentence):
@@ -35,10 +32,3 @@ class VIAACVoice(threading.Thread):
             wordToPlay = AudioSegment.from_mp3(sentence[i])
             fullSentence += wordToPlay
         play(fullSentence)
-
-if __name__ == "__main__":
-    VV = VIAACVoice()
-    VV.start()
-    VV.addToToSay(
-        ["../voice/hello.mp3", "../voice/my.mp3", "../voice/name.mp3", "../voice/is.mp3", "../voice/VIAAC.mp3"])
-    VV.join()

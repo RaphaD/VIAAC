@@ -8,10 +8,19 @@ CREATE TABLE IF NOT EXISTS VIAACdb.Commands (
   Description TEXT
 );
 
-CREATE TABLE IF NOT EXISTS VIAACdb.Requests (
-  id         INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-  Request    TEXT                              NOT NULL,
-  FullAnswer TEXT                              NOT NULL
+CREATE TABLE IF NOT EXISTS VIAACdb.Answers (
+  id             INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+  Request        TEXT                              NOT NULL,
+  FullAnswer     TEXT                              NOT NULL,
+  MultipleAnswer INTEGER                           NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS VIAACdb.AvailableAnswers (
+  id             INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+  ToLookLike     TEXT                              NOT NULL,
+  AnswerId       INTEGER                           NOT NULL,
+  MoreOperations INTEGER                           NOT NULL,
+  FOREIGN KEY (AnswerId) REFERENCES Answers (id)
 );
 
 CREATE TABLE IF NOT EXISTS VIAACdb.Words (
@@ -23,9 +32,9 @@ CREATE TABLE IF NOT EXISTS VIAACdb.Words (
 CREATE TABLE IF NOT EXISTS VIAACdb.AnswerWordLinks (
   id        INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
   WordPlace INTEGER                           NOT NULL,
-  RequestId INTEGER                           NOT NULL,
+  AnswerId INTEGER NOT NULL,
   WordId    INTEGER                           NOT NULL,
-  FOREIGN KEY (RequestId) REFERENCES Requests (id),
+  FOREIGN KEY (AnswerId) REFERENCES Answers (id),
   FOREIGN KEY (WordId) REFERENCES Words (id)
 );
 
@@ -818,16 +827,32 @@ VALUES ("all off", "Toggles off all LEDs"),
   ("sono on", "Toggle on sono"),
   ("sono off", "Toggle off sono");
 
-INSERT INTO VIAACdb.Requests (Request, FullAnswer)
-VALUES ("introduce yourself", "hello my name is VIAAC standing for voice interpretor acomplishing asked commands"),
-  ("hello Sean", "hello Sean"),
-  ("hello Danielle", "hello Danielle"),
-  ("hello Gabrielle", "hello Gabrielle"),
-  ("hello Raphael", "hello Raphael"),
-  ("hello Michelle", "hello Michelle"),
-  ("date time", "o_clock"),
-  ("date", "o_clock"),
-  ("count", "1 2 3 4 5 6 7 8 9 10");
+INSERT INTO VIAACdb.Answers (Request, FullAnswer, MultipleAnswer)
+VALUES ("full introduction", "hello my name is VIAAC standing for voice interpretor acomplishing asked commands", 0),
+  ("full name", "my name is VIAAC standing for voice interpretor acomplishing asked commands", 0),
+  ("hello Sean", "hello Sean", 0),
+  ("hello Danielle", "hello Danielle", 0), --5
+  ("hello Gabrielle", "hello Gabrielle", 0),
+  ("hello Raphael", "hello Raphael", 0),
+  ("hello Michelle", "hello Michelle", 0),
+  ("date time", "it is o_clock", 0),
+  ("time", "it is o_clock", 0), --10
+  ("date", "it is", 0),
+  ("count", "1 2 3 4 5 6 7 8 9 10", 0);
+
+INSERT INTO VIAACdb.AvailableAnswers (ToLookLike, AnswerId, MoreOperations)
+VALUES ("introduce yourself", 1, 0),
+  ("who are you", 2, 0),
+  ("what name", 2, 0),
+  ("hello sean", 3, 0),
+  ("hello danielle", 4, 0),
+  ("hello gabrielle", 5, 0),
+  ("hello raphael", 6, 0),
+  ("hello michelle", 7, 0),
+  ("what time date", 8, 1),
+  ("what time", 9, 1),
+  ("which date", 10, 1),
+  ("count ten", 11, 0);
 
 INSERT INTO VIAACdb.Words (PathTo, Word)
 VALUES ("../voice/10.mp3", "10"),

@@ -1,5 +1,5 @@
 from server.VIAACServer import VIAACServer
-from utils.VIAACVoice import VIAACVoice
+from speaking.VIAACVoice import VIAACVoice
 from utils.params import PORT_SERVER, CLIENT_TRESHOLD
 
 __author__ = 'fums'
