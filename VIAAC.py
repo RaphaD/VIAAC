@@ -17,8 +17,8 @@ class VIAAC(object):
                                    portServer=PORT_SERVER, clientTreshold=CLIENT_TRESHOLD)
 
     def startProcesses(self):
+        self._voicer.start()
         self._server.mainLoop()
-        self._voicer.mainLoop()
 
     def initArduinoCommunication(self):
         # self._arduino = ArduinoCommunication(USB_PORT, BAUDRATE)
@@ -28,5 +28,4 @@ class VIAAC(object):
 if __name__ == "__main__":
     V = VIAAC()
     V.initProcesses()
-    V.startProcesses()
     V.startProcesses()

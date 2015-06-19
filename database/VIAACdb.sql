@@ -855,79 +855,79 @@ VALUES ("introduce yourself", 1, 0),
   ("count ten", 11, 0);
 
 INSERT INTO VIAACdb.Words (PathTo, Word)
-VALUES ("../voice/10.mp3", "10"),
-  ("../voice/11.mp3", "11"),
-  ("../voice/12.mp3", "12"),
-  ("../voice/13.mp3", "13"),
-  ("../voice/14.mp3", "14"), -- 5
-  ("../voice/15.mp3", "15"),
-  ("../voice/16.mp3", "16"),
-  ("../voice/17.mp3", "17"),
-  ("../voice/18.mp3", "18"),
-  ("../voice/19.mp3", "19"), -- 10
-  ("../voice/1.mp3", "1"),
-  ("../voice/20.mp3", "20"),
-  ("../voice/2.mp3", "2"),
-  ("../voice/30.mp3", "30"),
-  ("../voice/40.mp3", "40"), --15
-  ("../voice/50.mp3", "50"),
-  ("../voice/5.mp3", "5"),
-  ("../voice/60.mp3", "60"),
-  ("../voice/6.mp3", "6"),
-  ("../voice/70.mp3", "70"), -- 20
-  ("../voice/7.mp3", "7"),
-  ("../voice/80.mp3", "80"),
-  ("../voice/8.mp3", "8"),
-  ("../voice/90.mp3", "90"),
-  ("../voice/9.mp3", "9"), --25
-  ("../voice/acomplishing.mp3", "acomplishing"),
-  ("../voice/a.mp3", "a"),
-  ("../voice/april.mp3", "april"),
-  ("../voice/asked.mp3", "asked"),
-  ("../voice/august.mp3", "august"), -- 30
-  ("../voice/billion.mp3", "billion"),
-  ("../voice/commands.mp3", "commands"),
-  ("../voice/Danielle.mp3", "Danielle"),
-  ("../voice/december.mp3", "december"),
-  ("../voice/februari.mp3", "februari"), --35
-  ("../voice/first.mp3", "first"),
-  ("../voice/for.mp3", "for"),
-  ("../voice/4.mp3", "4"),
-  ("../voice/friday.mp3", "friday"),
-  ("../voice/Gabrielle.mp3", "Gabrielle"), -- 40
-  ("../voice/hello.mp3", "hello"),
-  ("../voice/hundred.mp3", "hundred"),
-  ("../voice/interpretor.mp3", "interpretor"),
-  ("../voice/is2.mp3", "is2"),
-  ("../voice/is.mp3", "is"), --45
-  ("../voice/it.mp3", "it"),
-  ("../voice/january.mp3", "january"),
-  ("../voice/july.mp3", "july"),
-  ("../voice/june.mp3", "june"),
-  ("../voice/march.mp3", "march"), -- 50
-  ("../voice/may.mp3", "may"),
-  ("../voice/Michelle.mp3", "Michelle"),
-  ("../voice/million.mp3", "million"),
-  ("../voice/monday.mp3", "monday"),
-  ("../voice/my.mp3", "my"), -- 55
-  ("../voice/name.mp3", "name"),
-  ("../voice/november.mp3", "november"),
-  ("../voice/o_clock.mp3", "o_clock"),
-  ("../voice/october.mp3", "october"),
-  ("../voice/Raphael.mp3", "Raphael"), -- 60
-  ("../voice/saturday.mp3", "saturday"),
-  ("../voice/Sean.mp3", "Sean"),
-  ("../voice/second.mp3", "second"),
-  ("../voice/september.mp3", "september"),
-  ("../voice/sir.mp3", "sir"), --65
-  ("../voice/standing.mp3", "standing"),
-  ("../voice/sunday.mp3", "sunday"),
-  ("../voice/the.mp3", "the"),
-  ("../voice/third.mp3", "third"),
-  ("../voice/thousand.mp3", "thousand"), -- 70
-  ("../voice/3.mp3", "3"),
-  ("../voice/thursday.mp3", "thursday"),
-  ("../voice/tuesday.mp3", "tuesday"),
-  ("../voice/VIAAC.mp3", "VIAAC"),
-  ("../voice/voice.mp3", "voice"), -- 75
-  ("../voice/wednesday.mp3", "wednesday");
+VALUES ("voice/10.mp3", "10"),
+  ("voice/11.mp3", "11"),
+  ("voice/12.mp3", "12"),
+  ("voice/13.mp3", "13"),
+  ("voice/14.mp3", "14"), -- 5
+  ("voice/15.mp3", "15"),
+  ("voice/16.mp3", "16"),
+  ("voice/17.mp3", "17"),
+  ("voice/18.mp3", "18"),
+  ("voice/19.mp3", "19"), -- 10
+  ("voice/1.mp3", "1"),
+  ("voice/20.mp3", "20"),
+  ("voice/2.mp3", "2"),
+  ("voice/30.mp3", "30"),
+  ("voice/40.mp3", "40"), --15
+  ("voice/50.mp3", "50"),
+  ("voice/5.mp3", "5"),
+  ("voice/60.mp3", "60"),
+  ("voice/6.mp3", "6"),
+  ("voice/70.mp3", "70"), -- 20
+  ("voice/7.mp3", "7"),
+  ("voice/80.mp3", "80"),
+  ("voice/8.mp3", "8"),
+  ("voice/90.mp3", "90"),
+  ("voice/9.mp3", "9"), --25
+  ("voice/acomplishing.mp3", "acomplishing"),
+  ("voice/a.mp3", "a"),
+  ("voice/april.mp3", "april"),
+  ("voice/asked.mp3", "asked"),
+  ("voice/august.mp3", "august"), -- 30
+  ("voice/billion.mp3", "billion"),
+  ("voice/commands.mp3", "commands"),
+  ("voice/Danielle.mp3", "Danielle"),
+  ("voice/december.mp3", "december"),
+  ("voice/februari.mp3", "februari"), --35
+  ("voice/first.mp3", "first"),
+  ("voice/for.mp3", "for"),
+  ("voice/4.mp3", "4"),
+  ("voice/friday.mp3", "friday"),
+  ("voice/Gabrielle.mp3", "Gabrielle"), -- 40
+  ("voice/hello.mp3", "hello"),
+  ("voice/hundred.mp3", "hundred"),
+  ("voice/interpretor.mp3", "interpretor"),
+  ("voice/is2.mp3", "is2"),
+  ("voice/is.mp3", "is"), --45
+  ("voice/it.mp3", "it"),
+  ("voice/january.mp3", "january"),
+  ("voice/july.mp3", "july"),
+  ("voice/june.mp3", "june"),
+  ("voice/march.mp3", "march"), -- 50
+  ("voice/may.mp3", "may"),
+  ("voice/Michelle.mp3", "Michelle"),
+  ("voice/million.mp3", "million"),
+  ("voice/monday.mp3", "monday"),
+  ("voice/my.mp3", "my"), -- 55
+  ("voice/name.mp3", "name"),
+  ("voice/november.mp3", "november"),
+  ("voice/o_clock.mp3", "o_clock"),
+  ("voice/october.mp3", "october"),
+  ("voice/Raphael.mp3", "Raphael"), -- 60
+  ("voice/saturday.mp3", "saturday"),
+  ("voice/Sean.mp3", "Sean"),
+  ("voice/second.mp3", "second"),
+  ("voice/september.mp3", "september"),
+  ("voice/sir.mp3", "sir"), --65
+  ("voice/standing.mp3", "standing"),
+  ("voice/sunday.mp3", "sunday"),
+  ("voice/the.mp3", "the"),
+  ("voice/third.mp3", "third"),
+  ("voice/thousand.mp3", "thousand"), -- 70
+  ("voice/3.mp3", "3"),
+  ("voice/thursday.mp3", "thursday"),
+  ("voice/tuesday.mp3", "tuesday"),
+  ("voice/VIAAC.mp3", "VIAAC"),
+  ("voice/voice.mp3", "voice"), -- 75
+  ("voice/wednesday.mp3", "wednesday");

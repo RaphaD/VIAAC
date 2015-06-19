@@ -53,6 +53,7 @@ class VoiceAnalyzer(object):
             self.makeDate()
 
     def sendToVoicer(self, fileList):
+        print fileList
         l = []
         for i in range(len(fileList)):
             l.append(str(fileList[i][0]))
