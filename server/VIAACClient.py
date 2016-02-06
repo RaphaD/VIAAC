@@ -1,11 +1,10 @@
-import time
 import socket
+import time
 from threading import Thread, RLock
 
 from database.DBCommunication import DBCommunication
 from speaking.VoiceAnalyzer import VoiceAnalyzer
-from utils.params import MAX_CONNECTION_TIME, BUFFER_SIZE, SOCKET_TIMEOUT, FLAG_RAW_COMMAND
-
+from utils.params import MAX_CONNECTION_TIME, BUFFER_SIZE, SOCKET_TIMEOUT, FLAG_RAW_COMMAND, FLAG_GET_INFO
 
 __author__ = 'fums'
 
@@ -49,6 +48,10 @@ class VIAACClient(Thread):
                         print toQuery
                         toSend = self._db.getOrderToSend(toQuery)
                         print "Fetched from db : ", toSend
+
+                    elif FLAG_GET_INFO in data:
+                        data = data.split()[1:]
+
 
                     # Spoken message to interpret
                     else:

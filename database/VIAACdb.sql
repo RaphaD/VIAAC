@@ -38,6 +38,32 @@ CREATE TABLE IF NOT EXISTS VIAACdb.AnswerWordLinks (
   FOREIGN KEY (WordId) REFERENCES Words (id)
 );
 
+CREATE TABLE IF NOT EXISTS VIAACdb.StateString (
+  id        INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+  StateName TEXT                              NOT NULL,
+  State     TEXT                              NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS VIAACdb.StateNumber (
+  id        INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+  StateName TEXT                              NOT NULL,
+  State     INTEGER                           NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS VIAACdb.ActivityString (
+  id           INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+  ActivityName TEXT                              NOT NULL,
+  State        INTEGER                           NOT NULL,
+  FOREIGN KEY (State) REFERENCES StateString (id)
+);
+
+CREATE TABLE IF NOT EXISTS VIAACdb.ActivityNumber (
+  id           INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+  ActivityName TEXT                              NOT NULL,
+  State        INTEGER                           NOT NULL,
+  FOREIGN KEY (State) REFERENCES StateNumber (id)
+);
+
 INSERT INTO VIAACdb.Commands (Command, Description)
 VALUES ("red 0", "Toggles off red LEDs"),
   ("red 1", "Write 1  on analog red pin"),
@@ -931,3 +957,23 @@ VALUES ("voice/10.mp3", "10"),
   ("voice/VIAAC.mp3", "VIAAC"),
   ("voice/voice.mp3", "voice"), -- 75
   ("voice/wednesday.mp3", "wednesday");
+
+--INSERT INTO VIAACdb.StateString(StateName, State) VALUES
+
+INSERT INTO VIAACdb.StateNumber (StateName, State)
+VALUES ("wave", 0),
+  ("screen", 0),
+  ("sono", 0),
+  ("red", 0),
+  ("green", 0),
+  ("blue", 0);
+
+--INSERT INTO VIAACdb.ActivityString(ActivityName, StateId) VALUES
+
+INSERT INTO VIAACdb.ActivityNumber (ActivityName, State)
+VALUES ("led", 4),
+  ("led", 5),
+  ("led", 6),
+  ("led", 1),
+  ("device", 2),
+  ("device", 3);

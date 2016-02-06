@@ -18,3 +18,5 @@ MAX_CONNECTION_TIME = 60 * 60
 
 # Flag sent to tell if the program has to run the algo to identify the message
 FLAG_RAW_COMMAND = "[raw_command]"
+# Flag sent to tell the client wants to get information from the server
+FLAG_GET_INFO = "[get_info]"
