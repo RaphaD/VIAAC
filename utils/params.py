@@ -16,7 +16,9 @@ BUFFER_SIZE = 1024
 # Unactivity time before closing connection with
 MAX_CONNECTION_TIME = 60 * 60
 
-# Flag sent to tell if the program has to run the algo to identify the message
+# Flag received to tell if the program has to run the algo to identify the message
 FLAG_RAW_COMMAND = "[raw_command]"
-# Flag sent to tell the client wants to get information from the server
-FLAG_GET_INFO = "[get_info]"
+# Flag received to tell the client wants to get information from the server
+FLAG_GET_STATE = "[get_state]"
+# Flag sent to tell the current state of a device / led
+FLAG_STATE_OF = "[state_of]"

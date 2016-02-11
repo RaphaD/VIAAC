@@ -50,19 +50,6 @@ CREATE TABLE IF NOT EXISTS VIAACdb.StateNumber (
   State     INTEGER                           NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS VIAACdb.ActivityString (
-  id           INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-  ActivityName TEXT                              NOT NULL,
-  State        INTEGER                           NOT NULL,
-  FOREIGN KEY (State) REFERENCES StateString (id)
-);
-
-CREATE TABLE IF NOT EXISTS VIAACdb.ActivityNumber (
-  id           INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-  ActivityName TEXT                              NOT NULL,
-  State        INTEGER                           NOT NULL,
-  FOREIGN KEY (State) REFERENCES StateNumber (id)
-);
 
 INSERT INTO VIAACdb.Commands (Command, Description)
 VALUES ("red 0", "Toggles off red LEDs"),
@@ -843,15 +830,15 @@ VALUES ("blue 0", "Toggles off blue LEDs"),
 
 
 INSERT INTO VIAACdb.Commands (Command, Description)
-VALUES ("all off", "Toggles off all LEDs"),
-  ("wave on", "Begin LED wave"),
-  ("wave off", "Stop LED wave"),
-  ("music on", "Begin music analyze and LED interpretation"),
-  ("music off", "Stop music analyze and LED interpretation"),
-  ("screen on", "Toggles on computer screen"),
-  ("screen off", "Toggles off computer screen"),
-  ("sono on", "Toggle on sono"),
-  ("sono off", "Toggle off sono");
+VALUES ("all 0", "Toggles off all LEDs"),
+  ("wave 1", "Begin LED wave"),
+  ("wave 0", "Stop LED wave"),
+  ("music 1", "Begin music analyze and LED interpretation"),
+  ("music 0", "Stop music analyze and LED interpretation"),
+  ("screen 1", "Toggles on computer screen"),
+  ("screen 0", "Toggles off computer screen"),
+  ("sono 1", "Toggle on sono"),
+  ("sono 0", "Toggle off sono");
 
 INSERT INTO VIAACdb.Answers (Request, FullAnswer, MultipleAnswer)
 VALUES ("full introduction", "hello my name is VIAAC standing for voice interpretor acomplishing asked commands", 0),
@@ -961,19 +948,10 @@ VALUES ("voice/10.mp3", "10"),
 --INSERT INTO VIAACdb.StateString(StateName, State) VALUES
 
 INSERT INTO VIAACdb.StateNumber (StateName, State)
-VALUES ("wave", 0),
+VALUES ("all", 0),
+  ("wave", 0),
   ("screen", 0),
   ("sono", 0),
   ("red", 0),
   ("green", 0),
   ("blue", 0);
-
---INSERT INTO VIAACdb.ActivityString(ActivityName, StateId) VALUES
-
-INSERT INTO VIAACdb.ActivityNumber (ActivityName, State)
-VALUES ("led", 4),
-  ("led", 5),
-  ("led", 6),
-  ("led", 1),
-  ("device", 2),
-  ("device", 3);

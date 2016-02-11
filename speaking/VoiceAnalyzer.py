@@ -1,5 +1,4 @@
 from database.DBCommunication import DBCommunication
-from speaking.VIAACVoice import VIAACVoice
 
 __author__ = 'fums'
 
@@ -72,6 +71,7 @@ class VoiceAnalyzer(object):
         return self._result
 
 
+"""
 if __name__ == "__main__":
     VV = VIAACVoice()
     VV.start()
@@ -87,3 +87,4 @@ if __name__ == "__main__":
 
     VA = VoiceAnalyzer("hello my name is raphael", VV)
     VA.main()
+    """

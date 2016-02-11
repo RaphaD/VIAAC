@@ -8,8 +8,6 @@ class DBCommunication(object):
         self._db = sqlite3.connect(dbLocation)
 
     def getOrderToSend(self, order):
-        print order
-        print len(order)
         curs = self._db.cursor()
         sqlRequest = """
             SELECT id
@@ -46,7 +44,9 @@ class DBCommunication(object):
             WHERE ToLookLike LIKE ?;
             """
         curs.execute(sqlRequest, (toLookLike, ))
-        return curs.fetchall()
+        res = curs.fetchall()
+        curs.close()
+        return res
 
     def getFileListToPlay(self, match):
         curs = self._db.cursor()
@@ -64,4 +64,45 @@ class DBCommunication(object):
                 """
         curs.execute(sqlRequest, (match, ))
         result = curs.fetchall()
+        curs.close()
+        return result
+
+    def setState(self, toUpdate):
+        column = toUpdate.split()[0]
+        newValue = ""
+        sqlRequest = ""
+        try:
+            newValue = int(toUpdate.split()[1])
+            sqlRequest = """
+                    UPDATE StateNumber
+                    SET State = ?
+                    WHERE StateName = ?;
+                     """
+        except ValueError:
+            newValue = toUpdate.split()[1]
+            sqlRequest = """
+                    UPDATE StateString
+                    SET State = ?
+                    WHERE StateName = ?;
+                     """
+        finally:
+            curs = self._db.cursor()
+            curs.execute(sqlRequest, (newValue, column,))
+            self._db.commit()
+            curs.close()
+
+    def getState(self, toQuery):
+        curs = self._db.cursor()
+        sqlRequest = """
+        SELECT State
+        FROM StateNumber
+        WHERE StateName = ?
+        UNION
+        SELECT State
+        FROM StateString
+        WHERE StateName = ?;
+        """
+        curs.execute(sqlRequest, (toQuery, toQuery))
+        result = curs.fetchall()
+        curs.close()
         return result

@@ -4,7 +4,7 @@ from threading import Thread, RLock
 
 from database.DBCommunication import DBCommunication
 from speaking.VoiceAnalyzer import VoiceAnalyzer
-from utils.params import MAX_CONNECTION_TIME, BUFFER_SIZE, SOCKET_TIMEOUT, FLAG_RAW_COMMAND, FLAG_GET_INFO
+from utils.params import MAX_CONNECTION_TIME, BUFFER_SIZE, SOCKET_TIMEOUT, FLAG_RAW_COMMAND, FLAG_GET_STATE
 
 __author__ = 'fums'
 
@@ -37,6 +37,7 @@ class VIAACClient(Thread):
 
                     # Direct raw command
                     if FLAG_RAW_COMMAND in data:
+                        print "RAW_COMMAND"
                         data = data.split()[1:]
                         toQuery = ""
                         for i in range(len(data)):
@@ -47,11 +48,15 @@ class VIAACClient(Thread):
                         print "Message from : ", self._clientInfo
                         print toQuery
                         toSend = self._db.getOrderToSend(toQuery)
+                        self._db.setState(toQuery)
                         print "Fetched from db : ", toSend
 
-                    elif FLAG_GET_INFO in data:
+                    elif FLAG_GET_STATE in data:
+                        print "FLAG_GET_STATE"
                         data = data.split()[1:]
-
+                        if len(data) == 1:
+                            state = self._db.getState(data[0])
+                            self._socket.send(str(state[0][0]) + "\n")
 
                     # Spoken message to interpret
                     else:
