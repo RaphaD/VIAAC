@@ -1,7 +1,6 @@
 from server.VIAACServer import VIAACServer
 from speaking.VIAACVoice import VIAACVoice
-from utils.ArduinoCommunication import ArduinoCommunication
-from utils.params import PORT_SERVER, CLIENT_TRESHOLD, USB_PORT, BAUDRATE
+from utils.params import PORT_SERVER, CLIENT_TRESHOLD
 
 __author__ = 'fums'
 
@@ -23,7 +22,7 @@ class VIAAC(object):
 
     def initArduinoCommunication(self):
         self._arduino = None
-        self._arduino = ArduinoCommunication(USB_PORT, BAUDRATE)
+        # self._arduino = ArduinoCommunication(USB_PORT, BAUDRATE)
 
 if __name__ == "__main__":
     V = VIAAC()
